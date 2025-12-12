@@ -2,14 +2,53 @@
 import React, { FormEvent } from 'react';
 
 export default function Contact() {
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const formData = new FormData(e.currentTarget);
-        const name = formData.get('name');
+    const [status, setStatus] = React.useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+    const [message, setMessage] = React.useState('');
 
-        // Simple alert for demo purposes
-        alert(`Teşekkürler Sayın ${name}, mesajınız alınmıştır. En kısa sürede size dönüş yapacağız.`);
-        e.currentTarget.reset();
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setStatus('loading');
+        setMessage('');
+
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+        const data = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            message: formData.get('message'),
+        };
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(result.error || 'Bir hata oluştu');
+            }
+
+            setStatus('success');
+            setMessage(`Teşekkürler Sayın ${data.name}, mesajınız alınmıştır. En kısa sürede size dönüş yapacağız.`);
+            form.reset();
+        } catch (error: any) {
+            setStatus('error');
+            setMessage(error.message || 'Mesaj gönderilirken bir hata oluştu.');
+        } finally {
+            // Reset status after 5 seconds if success
+            if (status === 'success') {
+                setTimeout(() => {
+                    setStatus('idle');
+                    setMessage('');
+                }, 5000);
+            }
+        }
     };
 
     return (
@@ -38,21 +77,42 @@ export default function Contact() {
                     <form className="contact-form" id="contactForm" onSubmit={handleSubmit}>
                         <div className="form-group">
                             <label htmlFor="name">Adınız Soyadınız</label>
-                            <input type="text" id="name" name="name" required placeholder="Adınız Soyadınız" />
+                            <input type="text" id="name" name="name" required placeholder="Adınız Soyadınız" disabled={status === 'loading'} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="email">E-posta Adresiniz</label>
-                            <input type="email" id="email" name="email" required placeholder="ornek@email.com" />
+                            <input type="email" id="email" name="email" required placeholder="ornek@email.com" disabled={status === 'loading'} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="phone">Telefon Numaranız</label>
-                            <input type="tel" id="phone" name="phone" placeholder="0555 555 55 55" />
+                            <input type="tel" id="phone" name="phone" placeholder="0555 555 55 55" disabled={status === 'loading'} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="message">Mesajınız</label>
-                            <textarea id="message" name="message" rows={5} required placeholder="Hukuki sorununuzu kısaca özetleyiniz..."></textarea>
+                            <textarea id="message" name="message" rows={5} required placeholder="Hukuki sorununuzu kısaca özetleyiniz..." disabled={status === 'loading'}></textarea>
                         </div>
-                        <button type="submit" className="button button-primary full-width">Gönder</button>
+
+                        {message && (
+                            <div style={{
+                                padding: '10px',
+                                marginBottom: '15px',
+                                borderRadius: '4px',
+                                backgroundColor: status === 'success' ? '#d4edda' : '#f8d7da',
+                                color: status === 'success' ? '#155724' : '#721c24',
+                                border: `1px solid ${status === 'success' ? '#c3e6cb' : '#f5c6cb'}`
+                            }}>
+                                {message}
+                            </div>
+                        )}
+
+                        <button
+                            type="submit"
+                            className="button button-primary full-width"
+                            disabled={status === 'loading'}
+                            style={{ opacity: status === 'loading' ? 0.7 : 1 }}
+                        >
+                            {status === 'loading' ? 'Gönderiliyor...' : 'Gönder'}
+                        </button>
                     </form>
                 </div>
             </div>
