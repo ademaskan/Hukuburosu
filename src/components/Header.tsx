@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,8 +13,8 @@ export default function Header() {
         <header className="header">
             <div className="container header-container">
                 <Link href="/" className="logo">
-                    <span className="logo-icon">⚖️</span>
-                    <span className="logo-text">Yasal Destek</span>
+                    <Image src="/hukuklogo.png" alt="Zeytin Hukuk Logo" width={50} height={40} className="logo-icon" />
+                    <span className="logo-text">Zeytin Hukuk</span>
                 </Link>
                 <nav className={`nav ${isMenuOpen ? 'active' : ''}`}>
                     <ul className="nav-list">

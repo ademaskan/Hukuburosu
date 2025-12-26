@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
     return (
@@ -6,8 +7,8 @@ export default function Footer() {
             <div className="container">
                 <div className="footer-top">
                     <div className="footer-brand">
-                        <span className="logo-icon">⚖️</span>
-                        <span className="footer-logo-text">Yasal Destek</span>
+                        <Image src="/hukuklogo.png" alt="Zeytin Hukuk Logo" width={40} height={40} className="logo-icon" />
+                        <span className="footer-logo-text">Zeytin Hukuk</span>
                         <p>Adalet arayışınızda güvenilir çözüm ortağınız.</p>
                     </div>
                     <div className="footer-links">
@@ -28,7 +29,7 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className="footer-bottom">
-                    <p>&copy; 2024 Yasal Destek Hukuk Bürosu. Tüm hakları saklıdır.</p>
+                    <p>&copy; 2024 Zeytin Hukuk Bürosu. Tüm hakları saklıdır.</p>
                     <p className="disclaimer">Bu site Türkiye Barolar Birliği Reklam Yasağı Yönetmeliği&apos;ne uygun olarak hazırlanmıştır.</p>
                 </div>
             </div>
