@@ -2,24 +2,28 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import React from 'react';
 import { Article } from '@/types';
+import fs from 'fs';
+import path from 'path';
 import '../blog.css';
 
-async function getArticle(slug: string): Promise<Article | null> {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-    const res = await fetch(`${baseUrl}/api/articles/${slug}`, { cache: 'no-store' });
-    if (!res.ok) return null;
-    return res.json();
+// Read articles directly from file for static generation
+function getArticlesFromFile(): Article[] {
+    try {
+        const dataFilePath = path.join(process.cwd(), 'src/data/articles.json');
+        const data = fs.readFileSync(dataFilePath, 'utf-8');
+        return JSON.parse(data);
+    } catch {
+        return [];
+    }
 }
 
-async function getArticles(): Promise<Article[]> {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-    const res = await fetch(`${baseUrl}/api/articles`, { cache: 'no-store' });
-    if (!res.ok) return [];
-    return res.json();
+function getArticleBySlug(slug: string): Article | null {
+    const articles = getArticlesFromFile();
+    return articles.find((a) => a.slug === slug || a.id === slug) || null;
 }
 
 export async function generateStaticParams() {
-    const articles = await getArticles();
+    const articles = getArticlesFromFile();
     return articles.map((article) => ({
         slug: article.slug,
     }));
@@ -27,9 +31,9 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
-    const article = await getArticle(slug);
+    const article = getArticleBySlug(slug);
     if (!article) {
-        return { title: 'Makale Bulunamadi | Zeytin Hukuk' };
+        return { title: 'Makale Bulunamadı | Zeytin Hukuk' };
     }
     return {
         title: `${article.title} | Zeytin Hukuk`,
@@ -77,7 +81,7 @@ function parseContent(content: string): React.ReactNode[] {
 
 export default async function BlogDetailPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
-    const article = await getArticle(slug);
+    const article = getArticleBySlug(slug);
 
     if (!article) {
         notFound();
@@ -87,7 +91,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
         <main className="blog-detail">
             <div className="container">
                 <Link href="/blog" className="back-link">
-                    Blog&apos;a Don
+                    Blog&apos;a Dön
                 </Link>
 
                 <article>
@@ -117,3 +121,6 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
         </main>
     );
 }
+
+// Force dynamic rendering so new articles are visible without rebuild
+export const dynamic = 'force-dynamic';

@@ -62,16 +62,16 @@ export default function Contact() {
                     <div className="contact-info">
                         <div className="contact-item">
                             <h3>Adres</h3>
-                            <p>Plaza İş Merkezi, Kat: 12 No: 42<br />Çankaya, Ankara - Türkiye</p>
+                            <p>Güzelyalı Mah. Ener Sk. No: 29/3 <br />Pendik/İstanbul</p>
                         </div>
                         <div className="contact-item">
                             <h3>Telefon</h3>
-                            <p><a href="tel:+903121234567">+90 (312) 123 45 67</a></p>
+                            <p><a href="tel:+905333007306">+90 533 300 7306</a></p>
                             <p>Hafta İçi: 09:00 - 18:00</p>
                         </div>
                         <div className="contact-item">
                             <h3>E-posta</h3>
-                            <p><a href="mailto:info@yasaldestek.com.tr">info@yasaldestek.com.tr</a></p>
+                            <p><a href="mailto:av.orhanzeytin@gmail.com">av.orhanzeytin@gmail.com</a></p>
                         </div>
                     </div>
                     <form className="contact-form" id="contactForm" onSubmit={handleSubmit}>

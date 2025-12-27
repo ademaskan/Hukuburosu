@@ -1,28 +1,34 @@
 import Link from 'next/link';
+import fs from 'fs';
+import path from 'path';
 import { Article } from '@/types';
 import './blog.css';
 
-async function getArticles(): Promise<Article[]> {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-    const res = await fetch(`${baseUrl}/api/articles`, { cache: 'no-store' });
-    if (!res.ok) return [];
-    return res.json();
+// Read articles directly from file
+function getArticles(): Article[] {
+    try {
+        const dataFilePath = path.join(process.cwd(), 'src/data/articles.json');
+        const data = fs.readFileSync(dataFilePath, 'utf-8');
+        return JSON.parse(data);
+    } catch {
+        return [];
+    }
 }
 
 export const metadata = {
     title: 'Blog | Zeytin Hukuk',
-    description: 'Hukuki gelismeler, makaleler ve bilgilendirici icerikler.',
+    description: 'Hukuki gelişmeler, makaleler ve bilgilendirici içerikler.',
 };
 
-export default async function BlogPage() {
-    const articles = await getArticles();
+export default function BlogPage() {
+    const articles = getArticles();
 
     return (
         <main>
             <section className="blog-hero">
                 <div className="container">
                     <h1>Hukuk Blogu</h1>
-                    <p>Hukuki konularda bilgilendirici makaleler ve guncel gelismeler</p>
+                    <p>Hukuki konularda bilgilendirici makaleler ve güncel gelişmeler</p>
                 </div>
             </section>
 
@@ -30,8 +36,8 @@ export default async function BlogPage() {
                 <div className="container">
                     {articles.length === 0 ? (
                         <div className="no-articles">
-                            <h3>Henuz makale bulunmamaktadir</h3>
-                            <p>Yakinda yeni icerikler eklenecektir.</p>
+                            <h3>Henüz makale bulunmamaktadır</h3>
+                            <p>Yakında yeni içerikler eklenecektir.</p>
                         </div>
                     ) : (
                         <div className="blog-grid">
@@ -52,7 +58,7 @@ export default async function BlogPage() {
                                         <h3>{article.title}</h3>
                                         <p>{article.excerpt}</p>
                                         <Link href={`/blog/${article.slug}`} className="blog-card-link">
-                                            Devamini Oku
+                                            Devamını Oku
                                         </Link>
                                     </div>
                                 </article>
@@ -64,3 +70,6 @@ export default async function BlogPage() {
         </main>
     );
 }
+
+// Force dynamic rendering so new articles are visible without rebuild
+export const dynamic = 'force-dynamic';
