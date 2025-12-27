@@ -18,10 +18,11 @@ export default function Header() {
                 </Link>
                 <nav className={`nav ${isMenuOpen ? 'active' : ''}`}>
                     <ul className="nav-list">
-                        <li><Link href="#hero" className="nav-link" onClick={closeMenu}>Ana Sayfa</Link></li>
-                        <li><Link href="#services" className="nav-link" onClick={closeMenu}>Hizmetlerimiz</Link></li>
-                        <li><Link href="#about" className="nav-link" onClick={closeMenu}>Hakkımızda</Link></li>
-                        <li><Link href="#contact" className="nav-link button-primary" onClick={closeMenu}>İletişime Geçin</Link></li>
+                        <li><Link href="/#hero" className="nav-link" onClick={closeMenu}>Ana Sayfa</Link></li>
+                        <li><Link href="/#services" className="nav-link" onClick={closeMenu}>Hizmetlerimiz</Link></li>
+                        <li><Link href="/#about" className="nav-link" onClick={closeMenu}>Hakkımızda</Link></li>
+                        <li><Link href="/blog" className="nav-link" onClick={closeMenu}>Blog</Link></li>
+                        <li><Link href="/#contact" className="nav-link button-primary" onClick={closeMenu}>İletişime Geçin</Link></li>
                     </ul>
                 </nav>
                 <button

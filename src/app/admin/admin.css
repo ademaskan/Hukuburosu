@@ -1,0 +1,318 @@
+/* Admin Panel Styles */
+
+.admin-container {
+    padding-top: 100px;
+    padding-bottom: var(--spacing-xl);
+    min-height: 100vh;
+    background-color: var(--color-bg-light);
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--color-primary);
+}
+
+.admin-header h1 {
+    font-size: 2rem;
+    color: var(--color-primary);
+}
+
+.admin-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: none;
+    font-size: 1rem;
+}
+
+.admin-btn-primary {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+}
+
+.admin-btn-primary:hover {
+    background-color: #5a6d4b;
+}
+
+.admin-btn-secondary {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+}
+
+.admin-btn-secondary:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.admin-btn-danger {
+    background-color: #dc3545;
+    color: var(--color-white);
+}
+
+.admin-btn-danger:hover {
+    background-color: #c82333;
+}
+
+.admin-btn-small {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+}
+
+/* Article Table */
+.admin-table {
+    width: 100%;
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.admin-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: var(--spacing-sm);
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-table th {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-weight: 600;
+}
+
+.admin-table tr:hover {
+    background-color: var(--color-bg-light);
+}
+
+.admin-table-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* Admin Form */
+.admin-form {
+    background: var(--color-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    max-width: 800px;
+}
+
+.admin-form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.admin-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.admin-form-group input,
+.admin-form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.admin-form-group input:focus,
+.admin-form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px rgba(107, 127, 92, 0.1);
+}
+
+.admin-form-group textarea {
+    min-height: 200px;
+    resize: vertical;
+}
+
+.admin-form-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid #eee;
+}
+
+.admin-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-secondary);
+    font-weight: 500;
+    margin-bottom: var(--spacing-md);
+    transition: gap 0.3s ease;
+}
+
+.admin-back-link:hover {
+    gap: 12px;
+}
+
+/* Loading & Messages */
+.admin-loading {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--color-text-light);
+}
+
+.admin-message {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-md);
+}
+
+.admin-message-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.admin-message-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.admin-empty {
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.admin-empty h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Hint text */
+.admin-hint {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    margin-top: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .admin-header {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        text-align: center;
+    }
+
+    .admin-table {
+        overflow-x: auto;
+    }
+
+    .admin-table table {
+        min-width: 600px;
+    }
+
+    .admin-form {
+        padding: var(--spacing-md);
+    }
+
+    .admin-form-actions {
+        flex-direction: column;
+    }
+
+    .admin-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Login Page */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    padding: var(--spacing-md);
+}
+
+.login-card {
+    background: var(--color-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.login-header h1 {
+    font-size: 1.8rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.login-header p {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+}
+
+.login-form .admin-form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 1.1rem;
+    margin-top: var(--spacing-sm);
+}
+
+/* Admin Header Actions */
+.admin-header-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.admin-user-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .login-card {
+        padding: var(--spacing-md);
+    }
+
+    .admin-header-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+}

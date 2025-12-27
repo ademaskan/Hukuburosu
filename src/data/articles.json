@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1766793766804",
+    "title": "makale",
+    "slug": "makale",
+    "excerpt": "makale",
+    "content": "makale",
+    "author": "Av. Zeytin Hukuk",
+    "publishedAt": "2025-12-27",
+    "imageUrl": ""
+  },
+  {
+    "id": "1766792919867",
+    "title": "Test Makale",
+    "slug": "test-makale",
+    "excerpt": "Bu bir test makalesidir.",
+    "content": "## Test Ba## Test Baslik\nTest icerik metni.",
+    "author": "Av. Zeytin Hukuk",
+    "publishedAt": "2025-12-26",
+    "imageUrl": ""
+  },
+  {
+    "id": "1",
+    "title": "Boşanma Davalarında Dikkat Edilmesi Gerekenler",
+    "slug": "bosanma-davalarinda-dikkat-edilmesi-gerekenler",
+    "excerpt": "Boşanma süreci hukuki ve duygusal açıdan zorlayıcı olabilir. Bu yazımızda dikkat edilmesi gereken önemli noktaları ele alıyoruz.",
+    "content": "Boşanma davası açılmadan önce, tarafların haklarını ve yükümlülüklerini iyi anlamaları gerekmektedir.\n\n## Anlaşmalı Boşanma\n\nAnlaşmalı boşanma, tarafların tüm konularda mutabık kalması halinde başvurulan en hızlı boşanma yöntemidir. Bu durumda evliliğin en az bir yıl sürmüş olması gerekir.\n\n## Çekişmeli Boşanma\n\nTarafların anlaşamaması durumunda çekişmeli boşanma davası açılır. Bu süreç daha uzun sürebilir ve mahkeme delilleri değerlendirerek karar verir.\n\n## Velayet ve Nafaka\n\nÇocukların velayeti ve nafaka konuları, boşanma davalarının en önemli konularındandır. Mahkeme, çocuğun üstün yararını gözeterek karar verir.",
+    "author": "Av. Zeytin Hukuk",
+    "publishedAt": "2024-12-15",
+    "imageUrl": "/blog/bosanma.jpg"
+  },
+  {
+    "id": "2",
+    "title": "İş Hukuku: İşçi Hakları Nelerdir?",
+    "slug": "is-hukuku-isci-haklari-nelerdir",
+    "excerpt": "İş Kanunu kapsamında çalışanların sahip olduğu temel hakları ve korunma mekanizmalarını inceliyoruz.",
+    "content": "Türkiye'de iş ilişkileri 4857 sayılı İş Kanunu ile düzenlenmektedir.\n\n## Çalışma Süreleri\n\nHaftalık çalışma süresi en fazla 45 saattir. Fazla mesai ücreti, normal ücretin %50 fazlasıdır.\n\n## Yıllık İzin\n\nÇalışanlar, çalışma süresine göre 14 ila 26 gün arasında yıllık ücretli izin hakkına sahiptir.\n\n## Kıdem Tazminatı\n\nEn az bir yıl çalışan ve haklı nedenle işten ayrılan veya çıkarılan işçiler kıdem tazminatı almaya hak kazanır.\n\n## İş Güvencesi\n\n30 veya daha fazla işçi çalıştıran işyerlerinde en az 6 ay kıdemi olan işçiler iş güvencesi kapsamındadır.",
+    "author": "Av. Zeytin Hukuk",
+    "publishedAt": "2024-12-10",
+    "imageUrl": "/blog/is-hukuku.jpg"
+  },
+  {
+    "id": "3",
+    "title": "Miras Hukuku: Mirasın Paylaştırılması",
+    "slug": "miras-hukuku-mirasin-paylastirilmasi",
+    "excerpt": "Miras bırakanın vefatı sonrasında mirasın nasıl paylaştırıldığını ve yasal mirasçıların haklarını açıklıyoruz.",
+    "content": "Miras hukuku, bir kişinin vefatı sonrasında malvarlığının nasıl devredileceğini düzenler.\n\n## Yasal Mirasçılar\n\nBirinci derece yasal mirasçılar altsoy (çocuklar), ikinci derece ana-baba ve kardeşler, üçüncü derece büyükanne ve büyükbabalardır.\n\n## Saklı Pay\n\nBazı mirasçıların saklı pay hakları vardır. Altsoyun saklı payı yasal miras payının yarısı, ana ve babanın dörtte biridir.\n\n## Miras Reddi\n\nMirasçılar, miras bırakanın borçlarından sorumlu olmamak için mirası reddedebilir. Ret süresi üç aydır.\n\n## Vasiyetname\n\nMiras bırakan, yasal sınırlar içinde malvarlığını vasiyetname ile paylaştırabilir.",
+    "author": "Av. Zeytin Hukuk",
+    "publishedAt": "2024-12-05",
+    "imageUrl": "/blog/miras.jpg"
+  }
+]
